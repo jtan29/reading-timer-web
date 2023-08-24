@@ -1,0 +1,60 @@
+{
+    "texts": [
+        {
+            "wordCount": 100,
+            "genre": "GENERAL",
+            "title": "A",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "CHILDREN",
+            "title": "B",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "GRAPHIC",
+            "title": "C",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "OTHER",
+            "title": "D",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "ARTICLE",
+            "title": "E",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "SELF_HELP",
+            "title": "F",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "TEXTBOOK",
+            "title": "G",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 100,
+            "genre": "NF_OTHER",
+            "title": "H",
+            "isComplete": false,
+            "elapsedTime": 0
+        }
+    ]
+}

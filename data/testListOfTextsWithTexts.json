@@ -1,0 +1,25 @@
+{
+    "texts": [
+        {
+            "wordCount": 1000,
+            "genre": "YA",
+            "title": "Test",
+            "isComplete": false,
+            "elapsedTime": 0
+        },
+        {
+            "wordCount": 2000,
+            "genre": "MEMOIR",
+            "title": "Another Test",
+            "isComplete": true,
+            "elapsedTime": 10000
+        },
+        {
+            "wordCount": 3000,
+            "genre": "SHORT_STORY",
+            "title": "I should have made less genres",
+            "isComplete": false,
+            "elapsedTime": 0
+        }
+    ]
+}

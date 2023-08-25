@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Test",
+    "wordCount": 1000,
+    "genre": "YA",
+    "isComplete": false,
+    "elapsedTime": 0,
+    "isTimerRunning": false,
+    "start" : null,
+    "end" : null
+  },
+  {
+    "title": "Another Test",
+    "wordCount": 2000,
+    "genre": "MEMOIR",
+    "isComplete": true,
+    "elapsedTime": 10000,
+    "isTimerRunning": false,
+    "start" : null,
+    "end" : null
+  },
+  {
+    "title": "I should have made less genres",
+    "wordCount": 3000,
+    "genre": "SHORT_STORY",
+    "isComplete": false,
+    "elapsedTime": 0,
+    "isTimerRunning": false,
+    "start" : null,
+    "end" : null
+  }
+]

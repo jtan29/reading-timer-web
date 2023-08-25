@@ -1,25 +1,37 @@
 package xyz.jtan29.readingtimerweb.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.json.JSONObject;
-import xyz.jtan29.readingtimerweb.persistence.ToWrite;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
 import java.time.Instant;
 
 // Representation of a text, with a genre, timer, tracked elapsed time (in seconds), a word count, and a title
 // Note: implementation of the timer made with the help of guide from https://www.baeldung.com/java-measure-elapsed-time
-public class Text implements ToWrite {
+@Document(collection = "texts")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Text {
 
     public static final int SECONDS_PER_MINUTE = 60;
     public static final int SECONDS_PER_HOUR = 3600;
     public static final int SECONDS_PER_DAY = 86400;
     public static final int MILLISECONDS_PER_SECOND = 1000;
 
+    @Getter
     private Genre genre;
     private boolean isComplete;
     private boolean isTimerRunning;
+    @Getter
     private int wordCount;
+    @Getter
     private long elapsedTime;
+    @Getter
     private String title;
     private Instant start;
     private Instant end;
@@ -102,16 +114,6 @@ public class Text implements ToWrite {
         return readingSpeed;
     }
 
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("title", title);
-        json.put("wordCount", wordCount);
-        json.put("isComplete", isComplete);
-        json.put("elapsedTime", elapsedTime);
-        json.put("genre", genre);
-        return json;
-    }
 
 
     public void setIsComplete(boolean b) {
@@ -141,22 +143,6 @@ public class Text implements ToWrite {
 
     public boolean getTimerStatus() {
         return this.isTimerRunning;
-    }
-
-    public int getWordCount() {
-        return this.wordCount;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public long getElapsedTime() {
-        return this.elapsedTime;
-    }
-
-    public Genre getGenre() {
-        return this.genre;
     }
 
 }

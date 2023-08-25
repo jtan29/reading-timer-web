@@ -11,8 +11,8 @@ public class TextTest {
     private Text tt2;
     @BeforeEach
     public void setUpTest() {
-        tt1 = new Text(1000, "Test", FictionGenre.GRAPHIC);
-        tt2 = new Text(5000, "Another Test", NonFictionGenre.MEMOIR);
+        tt1 = new Text(1000, "Test", Genre.GRAPHIC);
+        tt2 = new Text(5000, "Another Test", Genre.MEMOIR);
     }
 
     @Test
@@ -20,11 +20,11 @@ public class TextTest {
         assertEquals("Test", tt1.getTitle());
         assertEquals(1000, tt1.getWordCount());
         assertEquals(0, tt1.getElapsedTime());
-        assertEquals(FictionGenre.GRAPHIC, tt1.getGenre());
+        assertEquals(Genre.GRAPHIC, tt1.getGenre());
         assertEquals("Another Test", tt2.getTitle());
         assertEquals(5000, tt2.getWordCount());
         assertEquals(0, tt2.getElapsedTime());
-        assertEquals(NonFictionGenre.MEMOIR, tt2.getGenre());
+        assertEquals(Genre.MEMOIR, tt2.getGenre());
     }
 
     @Test
@@ -126,20 +126,11 @@ public class TextTest {
                 + 3 + " second(s)."), tt1.calcTimeStatement());
     }
 
-    @Test
-    public void testToJson() {
-        String result = tt1.toJson().toString();
-        String result2 = tt2.toJson().toString();
-        assertEquals("{\"wordCount\":1000,\"genre\":\"GRAPHIC\",\"title\":\"Test\",\"isComplete\":false," +
-                "\"elapsedTime\":0}", result);
-        assertEquals("{\"wordCount\":5000,\"genre\":\"MEMOIR\",\"title\":\"Another Test\",\"isComplete\":false," +
-                "\"elapsedTime\":0}", result2);
-    }
 
     @Test
     public void testSetGenre() {
-        assertEquals(FictionGenre.GRAPHIC, tt1.getGenre());
-        tt1.setGenre(FictionGenre.CHILDREN);
-        assertEquals(FictionGenre.CHILDREN, tt1.getGenre());
+        assertEquals(Genre.GRAPHIC, tt1.getGenre());
+        tt1.setGenre(Genre.CHILDREN);
+        assertEquals(Genre.CHILDREN, tt1.getGenre());
     }
 }

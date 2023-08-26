@@ -1,0 +1,42 @@
+### Getting all content
+GET http://localhost:8080/api
+
+
+### Trying to add new content
+POST http://localhost:8080/api
+Content-Type: application/json
+
+{
+  "title" : "First",
+  "genre" : "YA",
+  "wordCount" : "2000"
+}
+
+### Trying to add new content
+POST http://localhost:8080/api
+Content-Type: application/json
+
+{
+  "title" : "Second",
+  "genre" : "MEMOIR",
+  "wordCount" : "4000"
+}
+
+### Trying to add new content
+POST http://localhost:8080/api
+Content-Type: application/json
+
+{
+  "title" : "Third",
+  "genre" : "SHORT_STORY",
+  "wordCount" : "1000"
+}
+
+### Updating completeness
+POST http://localhost:8080/api/complete
+Content-Type: application/json
+
+{
+  "textId" : "1",
+  "isComplete" : "true"
+}

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.json.JSONObject;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
@@ -24,15 +23,20 @@ public class Text {
     public static final int MILLISECONDS_PER_SECOND = 1000;
 
     @Getter
-    private Genre genre;
-    private boolean isComplete;
-    private boolean isTimerRunning;
+    private int textId;
+    @Getter
+    private String title;
     @Getter
     private int wordCount;
     @Getter
+    private Genre genre;
+    @Getter
+    private boolean isComplete;
+    @Getter
     private long elapsedTime;
     @Getter
-    private String title;
+    private boolean isTimerRunning;
+
     private Instant start;
     private Instant end;
 
@@ -43,7 +47,8 @@ public class Text {
     //          Begins with zero seconds elapsed and marks the text as not having a running timer
     //          and incomplete.
 
-    public Text(int wordCount, String title, Genre genre) {
+    public Text(int textId, String title, Genre genre, int wordCount) {
+        this.textId = textId;
         this.wordCount = wordCount;
         this.title = title;
         this.genre = genre;
@@ -55,7 +60,10 @@ public class Text {
     // REQUIRES: timer is not running
     // MODIFIES: this
     // EFFECTS: begins the timer
-    public void startTimer() {
+    public void startTimer() throws TimerAlreadyRunningException {
+        if (isTimerRunning) {
+            throw new TimerAlreadyRunningException();
+        }
         start = Instant.now();
         isTimerRunning = true;
     }
@@ -63,7 +71,10 @@ public class Text {
     // REQUIRES: timer is running
     // MODIFIES: this
     // EFFECTS: stops the timer and adds elapsed time to total (in seconds)
-    public void endTimer() {
+    public void endTimer() throws TimerNotRunningException {
+        if (!isTimerRunning) {
+            throw new TimerNotRunningException();
+        }
         end = Instant.now();
         isTimerRunning = false;
         Duration duration = Duration.between(start, end);
@@ -137,12 +148,5 @@ public class Text {
         this.genre = g;
     }
 
-    public boolean getIsComplete() {
-        return this.isComplete;
-    }
-
-    public boolean getTimerStatus() {
-        return this.isTimerRunning;
-    }
 
 }

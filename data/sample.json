@@ -1,5 +1,6 @@
 [
   {
+    "textId" : 1,
     "title": "Test",
     "wordCount": 1000,
     "genre": "YA",
@@ -10,6 +11,7 @@
     "end" : null
   },
   {
+    "textId": 2,
     "title": "Another Test",
     "wordCount": 2000,
     "genre": "MEMOIR",
@@ -20,6 +22,7 @@
     "end" : null
   },
   {
+    "textId": 3,
     "title": "I should have made less genres",
     "wordCount": 3000,
     "genre": "SHORT_STORY",

@@ -11,16 +11,18 @@ public class TextTest {
     private Text tt2;
     @BeforeEach
     public void setUpTest() {
-        tt1 = new Text(1000, "Test", Genre.GRAPHIC);
-        tt2 = new Text(5000, "Another Test", Genre.MEMOIR);
+        tt1 = new Text(1, "Test", Genre.GRAPHIC, 1000);
+        tt2 = new Text(2, "Another Test", Genre.MEMOIR, 5000);
     }
 
     @Test
     public void testConstructor() {
+        assertEquals(1, tt1.getTextId());
         assertEquals("Test", tt1.getTitle());
         assertEquals(1000, tt1.getWordCount());
         assertEquals(0, tt1.getElapsedTime());
         assertEquals(Genre.GRAPHIC, tt1.getGenre());
+        assertEquals(2, tt2.getTextId());
         assertEquals("Another Test", tt2.getTitle());
         assertEquals(5000, tt2.getWordCount());
         assertEquals(0, tt2.getElapsedTime());
@@ -67,12 +69,45 @@ public class TextTest {
 
     @Test
     public void testTimer() throws InterruptedException {
-        tt1.startTimer();
-        assertTrue(tt1.getTimerStatus());
+        assertFalse(tt1.isTimerRunning());
+        try {
+            tt1.startTimer();
+        } catch (TimerAlreadyRunningException e) {
+            fail("Should not have thrown exception");
+        }
+        assertTrue(tt1.isTimerRunning());
         Thread.sleep(2000);
-        tt1.endTimer();
-        assertFalse(tt1.getTimerStatus());
+        try {
+            tt1.endTimer();
+        } catch (TimerNotRunningException e) {
+            fail("Should not have thrown exception");
+        }
+        assertFalse(tt1.isTimerRunning());
         assertEquals(2, tt1.getElapsedTime());
+
+    }
+
+    @Test
+    public void testTimerAlreadyRunning() {
+        tt1.setTimerRunning(true);
+        try {
+            tt1.startTimer();
+        } catch (TimerAlreadyRunningException e) {
+            //fine
+        }
+        fail("Should have thrown an TimerAlreadyRunningException");
+
+    }
+
+    @Test
+    public void testTimerNotRunning() {
+        tt1.setTimerRunning(false);
+        try {
+            tt1.endTimer();
+        } catch (TimerNotRunningException e) {
+            //fine
+        }
+        fail("Should have thrown an TimerNotRunningException");
 
     }
 

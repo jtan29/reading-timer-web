@@ -10,4 +10,8 @@ import java.util.Optional;
 public interface TextRepository extends MongoRepository<Text, ObjectId> {
 
     Optional<Text> findTextByTextId(int textId);
+
+    Optional<Text> deleteTextByTextId(int textId);
+
+
 }

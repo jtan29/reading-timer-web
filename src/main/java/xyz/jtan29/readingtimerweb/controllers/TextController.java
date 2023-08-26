@@ -38,6 +38,11 @@ public class TextController {
         return new ResponseEntity<Text>(textService.createText(title, genre, wordCount), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/delete/{textId}")
+    public ResponseEntity<Text> deleteText(@PathVariable int textId) {
+        return new ResponseEntity<Text>(textService.deleteText(textId), HttpStatus.NO_CONTENT);
+    }
+
 
     @PostMapping("/complete")
     public ResponseEntity<Text> updateTextIsComplete(@RequestBody Map<String, String> payload) {

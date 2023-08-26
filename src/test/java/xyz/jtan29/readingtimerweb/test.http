@@ -1,6 +1,8 @@
 ### Getting all content
 GET http://localhost:8080/api
 
+### Getting one text
+GET http://localhost:8080/api/1
 
 ### Trying to add new content
 POST http://localhost:8080/api
@@ -40,3 +42,7 @@ Content-Type: application/json
   "textId" : "1",
   "isComplete" : "true"
 }
+
+### Deleting a text
+DELETE http://localhost:8080/api/delete/0
+

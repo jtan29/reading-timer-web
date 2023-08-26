@@ -45,6 +45,12 @@ public class TextService {
         return newText;
     }
 
+    public Text deleteText(int textId) {
+        textRepository.deleteTextByTextId(textId);
+        mongoTemplate.update(Text.class);
+        return null;
+    }
+
     public Text updateTextIsComplete(int textId, boolean isComplete) {
         Optional<Text> selectedText = textRepository.findTextByTextId(textId);
         if (selectedText.isPresent()) {

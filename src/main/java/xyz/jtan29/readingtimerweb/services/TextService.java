@@ -2,9 +2,6 @@ package xyz.jtan29.readingtimerweb.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -55,6 +52,7 @@ public class TextService {
         Optional<Text> selectedText = textRepository.findTextByTextId(textId);
         if (selectedText.isPresent()) {
             Text existingText = selectedText.get();
+            existingText.setIsComplete(isComplete);
             mongoOps.updateFirst(query(where("textId").is(textId)), update("isComplete", isComplete), Text.class);
             return existingText;
         } else {
@@ -72,7 +70,9 @@ public class TextService {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Timer is already running.");
             }
             mongoOps.updateFirst(query(where("textId").is(textId)),
-                    update("isComplete", existingText.isTimerRunning()), Text.class);
+                    update("start", existingText.getStart()), Text.class);
+            mongoOps.updateFirst(query(where("textId").is(textId)),
+                    update("isTimerRunning", existingText.isTimerRunning()), Text.class);
             return existingText;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No text associated with this ID");
@@ -88,9 +88,10 @@ public class TextService {
             } catch (TimerNotRunningException e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Timer is not running.");
             }
-            textRepository.save(existingText);
             mongoOps.updateFirst(query(where("textId").is(textId)),
-                    update("isComplete", existingText.isTimerRunning()), Text.class);
+                    update("end", existingText.getEnd()), Text.class);
+            mongoOps.updateFirst(query(where("textId").is(textId)),
+                    update("isTimerRunning", existingText.isTimerRunning()), Text.class);
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("elapsedTime", existingText.getElapsedTime()), Text.class);
             return existingText;

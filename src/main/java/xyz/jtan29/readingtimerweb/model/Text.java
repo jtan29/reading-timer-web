@@ -55,6 +55,9 @@ public class Text {
         elapsedTime = 0;
         isTimerRunning = false;
         isComplete = false;
+        this.start = Instant.now();
+        this.end = Instant.now();
+
     }
 
     // REQUIRES: timer is not running

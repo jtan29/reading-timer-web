@@ -2,7 +2,7 @@
 GET http://localhost:8080/api
 
 ### Getting one text
-GET http://localhost:8080/api/1
+GET http://localhost:8080/api/0
 
 ### Trying to add new content
 POST http://localhost:8080/api
@@ -39,10 +39,29 @@ POST http://localhost:8080/api/complete
 Content-Type: application/json
 
 {
-  "textId" : "1",
-  "isComplete" : "true"
+  "textId" : "0",
+  "isComplete" : "false"
+}
+
+### Trying to start a timer
+
+POST http://localhost:8080/api/start
+Content-Type: application/json
+
+{
+  "textId" : "0"
+}
+
+
+### Trying to end a timer
+
+POST http://localhost:8080/api/end
+Content-Type: application/json
+
+{
+  "textId" : "0"
 }
 
 ### Deleting a text
-DELETE http://localhost:8080/api/delete/0
+DELETE http://localhost:8080/api/1/delete
 

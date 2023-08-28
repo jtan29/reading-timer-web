@@ -69,10 +69,13 @@ public class TextService {
             } catch (TimerAlreadyRunningException e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Timer is already running.");
             }
+
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("start", existingText.getStart()), Text.class);
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("isTimerRunning", existingText.isTimerRunning()), Text.class);
+
+
             return existingText;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No text associated with this ID");

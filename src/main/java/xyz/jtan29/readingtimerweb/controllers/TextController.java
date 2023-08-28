@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api")
 public class TextController {
 
@@ -44,23 +44,23 @@ public class TextController {
         return new ResponseEntity<>(textService.deleteText(textId), HttpStatus.NO_CONTENT);
     }
 
-
-    @PostMapping("/complete")
-    public ResponseEntity<Text> updateTextIsComplete(@RequestBody Map<String, String> payload) {
-        int textId = Integer.parseInt(payload.get("textId"));
-        boolean complete = Boolean.parseBoolean(payload.get("isComplete"));
-        return new ResponseEntity<>(textService.updateTextIsComplete(textId, complete), HttpStatus.OK);
+    @PutMapping("/{textId}/complete")
+    public ResponseEntity<Text> updateTextIsComplete(@PathVariable int textId) {
+        return new ResponseEntity<>(textService.updateTextIsComplete(textId, true), HttpStatus.OK);
     }
 
-    @PostMapping("/start")
-    public ResponseEntity<Text> updateTextTimerStart(@RequestBody Map<String, String> payload) {
-        int textId = Integer.parseInt(payload.get("textId"));
+    @PutMapping("/{textId}/incomplete")
+    public ResponseEntity<Text> updateTextNotComplete(@PathVariable int textId) {
+        return new ResponseEntity<>(textService.updateTextIsComplete(textId, false), HttpStatus.OK);
+    }
+
+    @PutMapping("/{textId}/start")
+    public ResponseEntity<Text> updateTextTimerStart(@PathVariable int textId) {
         return new ResponseEntity<>(textService.startTimer(textId), HttpStatus.OK);
     }
 
-    @PostMapping("/end")
-    public ResponseEntity<Text> updateTextTimerEnd(@RequestBody Map<String, String> payload) {
-        int textId = Integer.parseInt(payload.get("textId"));
+    @PutMapping("/{textId}/end")
+    public ResponseEntity<Text> updateTextTimerEnd(@PathVariable int textId) {
         return new ResponseEntity<>(textService.endTimer(textId), HttpStatus.OK);
     }
 }

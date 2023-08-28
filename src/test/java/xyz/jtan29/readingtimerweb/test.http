@@ -2,7 +2,7 @@
 GET http://localhost:8080/api
 
 ### Getting one text
-GET http://localhost:8080/api/0
+GET http://localhost:8080/api/1
 
 ### Trying to add new content
 POST http://localhost:8080/api
@@ -14,53 +14,20 @@ Content-Type: application/json
   "wordCount" : "2000"
 }
 
-### Trying to add new content
-POST http://localhost:8080/api
-Content-Type: application/json
+### Updating completeness (true)
+PUT http://localhost:8080/api/0/complete
 
-{
-  "title" : "Second",
-  "genre" : "MEMOIR",
-  "wordCount" : "4000"
-}
-
-### Trying to add new content
-POST http://localhost:8080/api
-Content-Type: application/json
-
-{
-  "title" : "Third",
-  "genre" : "SHORT_STORY",
-  "wordCount" : "1000"
-}
-
-### Updating completeness
-POST http://localhost:8080/api/complete
-Content-Type: application/json
-
-{
-  "textId" : "0",
-  "isComplete" : "false"
-}
+### Updating completeness (false)
+PUT http://localhost:8080/api/0/incomplete
 
 ### Trying to start a timer
 
-POST http://localhost:8080/api/start
-Content-Type: application/json
-
-{
-  "textId" : "0"
-}
-
+PUT http://localhost:8080/api/1/start
 
 ### Trying to end a timer
 
-POST http://localhost:8080/api/end
-Content-Type: application/json
+PUT http://localhost:8080/api/1/end
 
-{
-  "textId" : "0"
-}
 
 ### Deleting a text
 DELETE http://localhost:8080/api/1/delete

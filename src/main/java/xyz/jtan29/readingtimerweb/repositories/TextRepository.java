@@ -14,4 +14,5 @@ public interface TextRepository extends MongoRepository<Text, ObjectId> {
     Optional<Text> deleteTextByTextId(int textId);
 
 
+
 }

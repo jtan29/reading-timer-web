@@ -32,6 +32,8 @@ public class Text {
     private long elapsedTime;
     @Getter
     private boolean isTimerRunning;
+    @Getter
+    private String timeStatement;
 
     private Instant start;
     private Instant end;
@@ -53,6 +55,7 @@ public class Text {
         isComplete = false;
         this.start = Instant.now();
         this.end = Instant.now();
+        timeStatement = this.calcTimeStatement();
 
     }
 
@@ -78,6 +81,7 @@ public class Text {
         isTimerRunning = false;
         Duration duration = Duration.between(start, end);
         elapsedTime += (duration.toMillis() / MILLISECONDS_PER_SECOND);
+        timeStatement = this.calcTimeStatement();
     }
 
     // REQUIRES: given time interval is not negative
@@ -108,7 +112,7 @@ public class Text {
         long elapsedMinutes = remainingTime / SECONDS_PER_MINUTE;
         remainingTime = remainingTime - (elapsedMinutes * SECONDS_PER_MINUTE);
         return "\n" + elapsedDays + " " + "day(s), " + elapsedHours + " hour(s), "
-                + elapsedMinutes + " minute(s) "
+                + elapsedMinutes + " minute(s), "
                 + remainingTime + " second(s).";
     }
 

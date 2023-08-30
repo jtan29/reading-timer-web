@@ -73,12 +73,10 @@ public class TextService {
             } catch (TimerAlreadyRunningException e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Timer is already running.");
             }
-
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("start", existingText.getStart()), Text.class);
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("isTimerRunning", existingText.isTimerRunning()), Text.class);
-
 
             return existingText;
         } else {
@@ -101,6 +99,8 @@ public class TextService {
                     update("isTimerRunning", existingText.isTimerRunning()), Text.class);
             mongoOps.updateFirst(query(where("textId").is(textId)),
                     update("elapsedTime", existingText.getElapsedTime()), Text.class);
+            mongoOps.updateFirst(query(where("textId").is(textId)),
+                    update("timeStatement", existingText.getTimeStatement()), Text.class);
             return existingText;
 
         } else {

@@ -9,13 +9,13 @@ POST http://localhost:8080/api
 Content-Type: application/json
 
 {
-  "title" : "First",
+  "title" : "Test",
   "genre" : "YA",
-  "wordCount" : "2000"
+  "wordCount" : "1000"
 }
 
 ### Updating completeness (true)
-PUT http://localhost:8080/api/0/complete
+PUT http://localhost:8080/api//complete
 
 ### Updating completeness (false)
 PUT http://localhost:8080/api/0/incomplete

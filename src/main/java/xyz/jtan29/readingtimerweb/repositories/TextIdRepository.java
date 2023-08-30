@@ -7,6 +7,7 @@ import xyz.jtan29.readingtimerweb.model.TextId;
 
 import java.util.Optional;
 
+// Representation of Texts stored in database
 @Repository
 public interface TextIdRepository extends MongoRepository<TextId, ObjectId>{
     Optional<TextId> findTextIdByKey(String key);

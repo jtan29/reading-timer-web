@@ -6,6 +6,7 @@ import xyz.jtan29.readingtimerweb.model.Text;
 
 import java.util.Optional;
 
+// Representation of TextIds stored in database
 @Repository
 public interface TextRepository extends MongoRepository<Text, ObjectId> {
 

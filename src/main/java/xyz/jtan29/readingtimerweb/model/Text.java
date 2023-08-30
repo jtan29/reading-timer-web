@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Duration;
 import java.time.Instant;
 
-// Representation of a text, with a genre, timer, tracked elapsed time (in seconds), a word count, and a title
-// Note: implementation of the timer made with the help of guide from https://www.baeldung.com/java-measure-elapsed-time
+// Representation of a text, with a genre, timer, tracked elapsed time (in seconds), a word count, and a titlee
 @Document(collection = "texts")
 @Data
 public class Text {
@@ -128,7 +127,8 @@ public class Text {
         return readingSpeed;
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: changes the text's completion status
 
     public void setIsComplete(boolean b) {
         this.isComplete = b;
@@ -147,6 +147,8 @@ public class Text {
         this.wordCount = newWordCount;
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes the text's genre
     public void setGenre(Genre g) {
         this.genre = g;
     }

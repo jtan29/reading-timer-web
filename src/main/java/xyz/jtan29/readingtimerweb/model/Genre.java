@@ -1,6 +1,9 @@
 package xyz.jtan29.readingtimerweb.model;
 
-// Representation of available non-fictional genres for a text
+import lombok.Getter;
+
+// Representation of available genres for a text
+@Getter
 public enum Genre {
     GENERAL("Fiction book"),
     YA("Young adult book"),
@@ -22,7 +25,4 @@ public enum Genre {
         genreDescription = s;
     }
 
-    public String getGenreDescription() {
-        return genreDescription;
-    }
 }

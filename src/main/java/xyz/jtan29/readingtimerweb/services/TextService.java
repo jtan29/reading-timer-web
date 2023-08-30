@@ -5,10 +5,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import xyz.jtan29.readingtimerweb.model.Genre;
-import xyz.jtan29.readingtimerweb.model.Text;
-import xyz.jtan29.readingtimerweb.model.TimerAlreadyRunningException;
-import xyz.jtan29.readingtimerweb.model.TimerNotRunningException;
+import xyz.jtan29.readingtimerweb.model.*;
+import xyz.jtan29.readingtimerweb.repositories.TextIdRepository;
 import xyz.jtan29.readingtimerweb.repositories.TextRepository;
 
 import java.util.List;
@@ -20,9 +18,10 @@ import static org.springframework.data.mongodb.core.query.Update.update;
 
 @Service
 public class TextService {
-    private int textId = 0;
     @Autowired
     private TextRepository textRepository;
+    @Autowired
+    private TextIdRepository textIdRepository;
     @Autowired
     private MongoOperations mongoOps;
     @Autowired
@@ -36,9 +35,14 @@ public class TextService {
     }
 
     public Text createText(String title, Genre genre, int wordCount) {
-        Text newText = new Text(textId++, title, genre, wordCount);
+        int textId = textIdRepository.findTextIdByKey("one").get().getTextId();
+        int nextTextId = textId + 1;
+        textIdRepository.deleteTextIdByKey("one");
+        textIdRepository.insert(new TextId(nextTextId));
+        Text newText = new Text(nextTextId, title, genre, wordCount);
         textRepository.insert(newText);
         mongoTemplate.update(Text.class);
+        mongoTemplate.update(TextId.class);
         return newText;
     }
 

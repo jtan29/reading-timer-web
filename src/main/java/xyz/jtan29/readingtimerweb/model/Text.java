@@ -1,9 +1,7 @@
 package xyz.jtan29.readingtimerweb.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
@@ -13,8 +11,6 @@ import java.time.Instant;
 // Note: implementation of the timer made with the help of guide from https://www.baeldung.com/java-measure-elapsed-time
 @Document(collection = "texts")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Text {
 
     public static final int SECONDS_PER_MINUTE = 60;

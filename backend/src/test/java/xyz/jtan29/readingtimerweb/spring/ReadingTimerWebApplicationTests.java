@@ -1,13 +1,13 @@
-// package xyz.jtan29.readingtimerweb.spring;
+package xyz.jtan29.readingtimerweb.spring;
 
-// import org.junit.jupiter.api.Test;
-// import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-// @SpringBootTest
-// class ReadingTimerWebApplicationTests {
+@SpringBootTest
+class ReadingTimerWebApplicationTests {
 
-// 	@Test
-// 	void contextLoads() {
-// 	}
+	@Test
+	void contextLoads() {
+	}
 
-// }
+}

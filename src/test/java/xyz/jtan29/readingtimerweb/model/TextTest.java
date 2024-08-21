@@ -92,10 +92,10 @@ public class TextTest {
         tt1.setTimerRunning(true);
         try {
             tt1.startTimer();
+            fail("Should have thrown an TimerAlreadyRunningException");
         } catch (TimerAlreadyRunningException e) {
             //fine
         }
-        fail("Should have thrown an TimerAlreadyRunningException");
 
     }
 
@@ -104,10 +104,10 @@ public class TextTest {
         tt1.setTimerRunning(false);
         try {
             tt1.endTimer();
+            fail("Should have thrown an TimerNotRunningException");
         } catch (TimerNotRunningException e) {
             //fine
         }
-        fail("Should have thrown an TimerNotRunningException");
 
     }
 
@@ -133,7 +133,7 @@ public class TextTest {
     public void testCalcTimeStatementSecondsOnly() {
         tt1.addTime(49);
         assertEquals( ("\n" + 0 + " " + "day(s), " + 0 + " hour(s), "
-                + 0 + " minute(s) "
+                + 0 + " minute(s), "
                 + 49 + " second(s)."), tt1.calcTimeStatement());
     }
 
@@ -141,7 +141,7 @@ public class TextTest {
     public void testCalcTimeStatementWithMinutes() {
         tt1.addTime(150);
         assertEquals( ("\n" + 0 + " " + "day(s), " + 0 + " hour(s), "
-                + 2 + " minute(s) "
+                + 2 + " minute(s), "
                 + 30 + " second(s)."), tt1.calcTimeStatement());
     }
 
@@ -149,7 +149,7 @@ public class TextTest {
     public void testCalcTimeStatementWithHours() {
         tt1.addTime(3700);
         assertEquals( ("\n" + 0 + " " + "day(s), " + 1 + " hour(s), "
-                + 1 + " minute(s) "
+                + 1 + " minute(s), "
                 + 40 + " second(s)."), tt1.calcTimeStatement());
     }
 
@@ -157,7 +157,7 @@ public class TextTest {
     public void testCalcTimeStatementWithDays() {
         tt1.addTime(86400 + 3600 + 120 + 3);
         assertEquals( ("\n" + 1 + " " + "day(s), " + 1 + " hour(s), "
-                + 2 + " minute(s) "
+                + 2 + " minute(s), "
                 + 3 + " second(s)."), tt1.calcTimeStatement());
     }
 

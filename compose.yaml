@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - 8080:8080
+    env_file:
+      - ./backend/src/main/resources/.env
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+

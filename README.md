@@ -1,9 +1,9 @@
-# Reading Timer Web (Backend)
+# Reading Timer Web
 A web application version of my Reading Timer project. Originally written
 entirely in Java with a visual GUI using the Java Swing library, I re-used the
 Java code for the model to create the backend portion of a web application
-version of the project. In this version, data is stored in a MongoDB database. The frontend
-is able to retrieve information from REST API endpoints implementing basic CRUD functionality.
+version of the project. In this version, data is stored in a MongoDB database. The frontend is written using 
+Javascript, HTML, CSS, and React and is able to retrieve information from the backend through REST API endpoints.
 
 ## Original Description:
 
@@ -43,6 +43,10 @@ is able to retrieve information from REST API endpoints implementing basic CRUD 
 * Various Spring Boot tutorials, including:
   * https://www.youtube.com/watch?v=UgX5lgv4uVM&t=5513s
   * https://www.youtube.com/watch?v=UgX5lgv4uVM&t=5513s
+  * Form inputs based on https://www.w3schools.com/react/react_forms.asp
 
 
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -127,6 +127,7 @@ public class Text {
         return readingSpeed;
     }
 
+
     // MODIFIES: this
     // EFFECTS: changes the text's completion status
 

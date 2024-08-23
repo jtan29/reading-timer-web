@@ -15,8 +15,8 @@ Javascript, HTML, CSS, and React and is able to retrieve information from the ba
 - Track multiple texts at the same time
 - In-app timer
 - Calculation of *estimated* reading speed using logged time
-- ~~Calculation of *estimated* reading time for given word count and genre, using
-  the calculated reading speed from other texts~~ (not implemented in this version yet)
+- Calculation of *estimated* reading time for given word count and genre, using
+  the calculated reading speed from other texts
 - ~~Options to manually adjust logged time~~ (not implemented in this version yet)
 
 **Potential Users:**
@@ -46,7 +46,4 @@ Javascript, HTML, CSS, and React and is able to retrieve information from the ba
   * Form inputs based on https://www.w3schools.com/react/react_forms.asp
 
 
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
